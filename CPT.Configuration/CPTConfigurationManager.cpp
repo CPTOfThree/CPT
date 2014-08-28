@@ -19,7 +19,7 @@ CPTConfigurationManager::CPTConfigurationManager(void)
 
 CPTConfigurationManager::~CPTConfigurationManager(void)
 {
-
+	delete this->_cptConfigurationManager;
 }
 
 CPTConfigNode* CPTConfigurationManager::loadConfig(char* path)
