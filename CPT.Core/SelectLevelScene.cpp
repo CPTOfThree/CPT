@@ -1,5 +1,7 @@
 #pragma warning(disable:4996)
+
 #include "SelectLevelScene.h"
+
 Scene* SelectLevel::createScene()
 {
     // 'scene' is an autorelease object
