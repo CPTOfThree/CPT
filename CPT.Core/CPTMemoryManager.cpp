@@ -116,6 +116,9 @@ CPT_RESULT CPTMemoryManager::Alloc(CPTUINT memBytes, PCPTMemoryHandle handleInfo
 
 CPT_RESULT CPTMemoryManager::DoAlloc(CPTUINT memBytes, PCPTMemoryHandle handleInfo)
 {
+	_CPT_ASSERT_VALID_STATE;
+	_CPT_ASSERT_NOT_NULL(handleInfo);
+
 	handleInfo->Index   = 0;
 	handleInfo->PAddr   = NULL;
 	handleInfo->MemSize = 0;
@@ -181,6 +184,7 @@ allocatedEnd:
 
 void CPTMemoryManager::MarkAllocated(PCPTBufferNode pBuffer)
 {
+	_CPT_ASSERT_VALID_STATE;
 	_CPT_ASSERT(pBuffer != NULL);
 	_CPT_ASSERT(!pBuffer->IsInUse);
 	_CPT_ASSERT(pBuffer->Address != NULL);

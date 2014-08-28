@@ -10,23 +10,30 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace cocos2d::ui;
 
-#define CPTLONG long
-#define CPTUINT unsigned int
-#define CPTINT int
-#define CPTFLOAT float
-#define CPTBOOL bool
-#define CPTULONG unsigned long
+/*
+	基础类型定义
+*/
+#define CPTLONG     long
+#define CPTUINT     unsigned int
+#define CPTINT      int
+#define CPTFLOAT    float
+#define CPTBOOL     bool
+#define CPTULONG    unsigned long
 
 #define CPT_PROPERTY_KEY CPTINT
 #define CPT_PROPERTY_VALUE CPTFLOAT
 
+/*
+	当前版本属性 常量定义
+*/
 #define MAX_SUPPORT_PROPERTY_NUM 64
-#define ATTACK_PROPERTY 0
-#define DEFENSE_PROPERTY 1
-#define LIFE_PROPERTY 2
+#define ATTACK_PROPERTY          0
+#define DEFENSE_PROPERTY         1
+#define LIFE_PROPERTY            2
 
 #define CPTPATH Vector<Vec2&>
 #define POINTLIST Vector<Vec2&>
+
 
 #define CPT_START_GAME_SCENE_PATH "res/StartGame/StartGame.json"
 #define CPT_SELECT_LEVEL_SCENE_PATH "res/SelectLevel/SelectLevel.json"
@@ -55,9 +62,8 @@ using namespace cocos2d::ui;
 #define FatalError(p)
 
 #define _CPT_ASSERT_M(cond,message)
-
-#define _CPT_ASSERT(cond) _CPT_ASSERT_M(cond,NULL)
-
+#define _CPT_ASSERT(cond)         _CPT_ASSERT_M(cond,NULL)
+#define _CPT_ASSERT_NOT_NULL(OBJ) _CPT_ASSERT(NULL != (OBJ))
 enum UnitType
 {
 	Enemy,

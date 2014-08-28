@@ -3,6 +3,8 @@
 #ifndef _CPT_MEMORY_MANAGER_H_
 #define _CPT_MEMORY_MANAGER_H_
 
+#define _CPT_ASSERT_VALID_STATE _CPT_ASSERT(this->_initSuccessfully)
+
 /*
 	定义的内存信息结构体，包括该内存对应的句柄索引，开始地址以及
 	该内存块的具体的大小字节数。
@@ -61,6 +63,7 @@ private:
 	CPTUINT   _fixedSizeBySelf;
 	CPTUINT   _userAllcatedBytes;
 	CPTUINT   _allocatedBufferCount;
+	CPTBOOL   _initSuccessfully;
 
 	PCPTBufferNode      _pBuffer;
 	PCPTMemorySliceType _pMemorySlice;
