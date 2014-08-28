@@ -22,14 +22,15 @@ CPTMemoryManager::CPTMemoryManager(void)
 	CPTUINT blockSize = CPTMemoryManager::MIN_MEM_SLICE_SIZE;
 	for (int i = 0; i < CPTMemoryManager::MAX_MEM_SIZE_TYPE; i++)
 	{
-		(_pMemorySlice[i]).SizeInByte = blockSize;
+		(_pMemorySlice[i]).SizeInByte      = blockSize;
 		(_pMemorySlice[i]).FreeBufferIndex = 0;
-		(_pMemorySlice[i]).FreeCount = 0;
-		(_pMemorySlice[i]).TotalCount = 0;
-		(_pMemorySlice[i]).UsedCount = 0;
+		(_pMemorySlice[i]).FreeCount       = 0;
+		(_pMemorySlice[i]).TotalCount      = 0;
+		(_pMemorySlice[i]).UsedCount       = 0;
 
 		// 增大一倍
 		blockSize = (blockSize << 2);
+		_CPT_ASSERT(blockSize > 0);    // 确定内存大小没有溢出
 	}
 
 	// 计算内存节点存储对象本身消耗的内存，准备分配。
@@ -39,7 +40,6 @@ CPTMemoryManager::CPTMemoryManager(void)
 	if (NULL == _pBuffer)
 	{
 		// 分配失败
-		free(_pMemorySlice);
 		goto errors;
 	}
 
@@ -52,6 +52,19 @@ CPTMemoryManager::CPTMemoryManager(void)
 	return;
 
 errors:
+
+	if (NULL != this->_pMemorySlice)
+	{
+		free(_pMemorySlice);
+		_pMemorySlice = NULL;
+	}
+
+	if (NULL != this->_pBuffer)
+	{
+		free(_pBuffer);
+		_pBuffer = NULL;
+	}
+
 	// 分配内存失败，严重错误，需要关闭程序
 	FatalError(CPT_MEMORY_MANAGER_INITIALIZE_FAILED_FAIL);
 }

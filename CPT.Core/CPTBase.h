@@ -28,8 +28,8 @@ using namespace cocos2d::ui;
 #define CPTPATH Vector<Vec2&>
 #define POINTLIST Vector<Vec2&>
 
-#define CPT_START_GAME_SCENE_PATH "StartGame/StartGame.json"
-#define CPT_SELECT_LEVEL_SCENE_PATH "SelectLevel/SelectLevel.json"
+#define CPT_START_GAME_SCENE_PATH "res/StartGame/StartGame.json"
+#define CPT_SELECT_LEVEL_SCENE_PATH "res/SelectLevel/SelectLevel.json"
 #define CPT_START_GAME_BTN "btnStartGame"
 #define CPT_CONTINUE_GAME_BTN "btnContinueGame"
 
