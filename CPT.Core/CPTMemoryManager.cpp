@@ -3,7 +3,6 @@
 
 CPTMemoryManager::CPTMemoryManager(void)
 {
-
 	// 计算内存片需要消耗的总内存大小，然后分配指定大小的内存块
 	// 并且在分配成功后记录下分配的内存大小
 	CPTUINT memSliceSize = sizeof(CPTMemorySliceType)* CPTMemoryManager::MAX_MEM_SIZE_TYPE;
@@ -48,10 +47,12 @@ CPTMemoryManager::CPTMemoryManager(void)
 
 	_userAllcatedBytes    = 0;
 	_allocatedBufferCount = 0;
-
+	
+	_CPT_INITIALIZE_SUCCESS;
 	return;
 
 errors:
+	_CPT_INITIALIZE_FAIL;
 
 	if (NULL != this->_pMemorySlice)
 	{
@@ -69,7 +70,6 @@ errors:
 	FatalError(CPT_MEMORY_MANAGER_INITIALIZE_FAILED_FAIL);
 }
 
-
 CPTMemoryManager::~CPTMemoryManager(void)
 {
 	if (NULL != this->_pMemorySlice)
@@ -85,15 +85,15 @@ CPTMemoryManager::~CPTMemoryManager(void)
 	}
 }
 
-//CPTMemoryManager *CPTMemoryManager::GetInstance()
-//{
-//	if (NULL == CPTMemoryManager::_instance)
-//	{
-//		CPTMemoryManager::_instance = new CPTMemoryManager;
-//	}
-//
-//	return CPTMemoryManager::_instance;
-//}
+CPTMemoryManager *CPTMemoryManager::GetInstance()
+{
+	if (NULL == _instance)
+	{
+		_instance = new CPTMemoryManager();
+	}
+
+	return _instance;
+}
 
 CPT_RESULT CPTMemoryManager::Alloc(CPTUINT memBytes, PCPTMemoryHandle handleInfo)
 {
@@ -134,14 +134,22 @@ CPT_RESULT CPTMemoryManager::DoAlloc(CPTUINT memBytes, PCPTMemoryHandle handleIn
 			auto memorySlice = _pMemorySlice[i];
 			if (0 < memorySlice.FreeCount)
 			{
-				CPTUINT bufferIndex         = memorySlice.FreeBufferIndex;
+				CPTUINT bufferIndex = memorySlice.FreeBufferIndex;
+				
+				result = this->InitBuffer(&this->_pBuffer[bufferIndex]);
+
+				if (CPT_SUCCESS != result)
+				{
+					//初始化分配内存失败，直接返回
+					goto allocatedEnd;
+				}
+
 				memorySlice.FreeBufferIndex = this->_pBuffer[bufferIndex].NextBufferIndex;
 
 				handleInfo->Index   = bufferIndex;
 				handleInfo->MemSize = memorySlice.SizeInByte;
 				handleInfo->PAddr   = this->_pBuffer[bufferIndex].Address;
 
-				this->InitBuffer(&this->_pBuffer[bufferIndex]);
 				this->MarkAllocated(&this->_pBuffer[bufferIndex]);
 				goto allocatedEnd;
 			}
@@ -201,16 +209,112 @@ void CPTMemoryManager::MarkAllocated(PCPTBufferNode pBuffer)
 				this->_pMemorySlice[pBuffer->BufferSizeIndex].TotalCount);
 }
 
-void CPTMemoryManager::InitBuffer(PCPTBufferNode pBuffer)
+CPT_RESULT CPTMemoryManager::InitBuffer(PCPTBufferNode pBuffer)
 {
 	_CPT_ASSERT(pBuffer != NULL);
 
+	CPTUINT bufferSize = this->_pMemorySlice[pBuffer->BufferSizeIndex].SizeInByte;
 
+	if (NULL == pBuffer->Address)
+	{
+		// 地址已经被释放，需要重新分配
+		CPTUINT* pNewAddr = (CPTUINT*)malloc(bufferSize);
+
+		if (NULL == pNewAddr)
+		{
+			// 内存分配失败
+			return CPT_MEMORY_MANAGER_MEM_ALLOCATED_FAILED;
+		}
+
+		this->_userAllcatedBytes += bufferSize;
+		pBuffer->Address = pNewAddr;
+	}
+
+	_CPT_ASSERT_NOT_NULL(pBuffer->Address);
+
+	this->ZeroBuffer(pBuffer->Address, bufferSize);
+
+	return CPT_SUCCESS;
 }
 
-void CPTMemoryManager::ZeroBuffer(CPTUINT* pBuffer, CPTUINT sizeInBytes)
+void CPTMemoryManager::ZeroBuffer(const CPTUINT* pBuffer,const CPTUINT sizeInBytes)
 {
+	_CPT_ASSERT_VALID_STATE;
+	_CPT_ASSERT_NOT_NULL(pBuffer);
+	_CPT_ASSERT(sizeInBytes > 0);
 
+	CPTBYTE* pbBuffer = (CPTBYTE*)pBuffer;
+	CPTUINT  index    = 0;
+	CPTUINT  bufferLength = sizeInBytes;
+
+	while (bufferLength > 4)
+	{
+		*(pbBuffer + index + 0) = 0;
+		*(pbBuffer + index + 1) = 0;
+		*(pbBuffer + index + 2) = 0;
+		*(pbBuffer + index + 3) = 0;
+		index        += 4;
+		bufferLength -= 4;
+	}
+
+	while (bufferLength > 0)
+	{
+		*(pbBuffer + index) = 0;
+		index++;
+		bufferLength++;
+	}
+
+	_CPT_ASSERT(0     == bufferLength);
+	_CPT_ASSERT(index == sizeInBytes);
 }
 
+CPT_RESULT CPTMemoryManager::Free(CPTUINT index)
+{
+	_CPT_ASSERT_VALID_STATE;
+	_CPT_ASSERT(index < this->_allocatedBufferCount);
 
+	this->MarkFree(&this->_pBuffer[index]);
+
+	CPTUINT memSliceIndex = this->_pBuffer[index].BufferSizeIndex;
+
+	_CPT_ASSERT(memSliceIndex < CPTMemoryManager::MAX_MEM_SIZE_TYPE);
+
+#define MAX_HOLD_MEMSLICE_SIZE        2000000
+#define MAX_HOLD_MEMSLICE_FREE_COUNT  10
+
+	PCPTMemorySliceType pMemSliceType = &this->_pMemorySlice[memSliceIndex];
+	if (pMemSliceType->FreeCount > MAX_HOLD_MEMSLICE_FREE_COUNT &&
+		pMemSliceType->FreeCount * pMemSliceType->SizeInByte > MAX_HOLD_MEMSLICE_SIZE)
+	{
+		// 直接释放内存
+		free(this->_pBuffer[index].Address);
+
+		this->_userReleasedBytes += pMemSliceType->SizeInByte;
+		this->_userAllcatedBytes -= pMemSliceType->SizeInByte;
+		this->_pBuffer[index].Address = NULL;
+	}
+
+	// 将空闲内存块插入列表开始位置
+	this->_pBuffer[index].NextBufferIndex = pMemSliceType->FreeBufferIndex;
+	pMemSliceType->FreeBufferIndex        = index;
+
+	return CPT_SUCCESS;
+}
+
+void CPTMemoryManager:: MarkFree(PCPTBufferNode pBuffer)
+{
+	_CPT_ASSERT_VALID_STATE;
+	_CPT_ASSERT_NOT_NULL(pBuffer);
+	_CPT_ASSERT_NOT_NULL(pBuffer->Address);
+	_CPT_ASSERT(pBuffer->IsInUse);
+
+	PCPTMemorySliceType pMemSliceType = &this->_pMemorySlice[pBuffer->BufferSizeIndex];
+
+	pMemSliceType->FreeCount++;
+	pMemSliceType->UsedCount--;
+	pBuffer->IsInUse = FALSE;
+	pBuffer->ReleasedCount++;
+
+	_CPT_ASSERT(pBuffer->AllocatedCount == pBuffer->ReleasedCount);
+	_CPT_ASSERT(pMemSliceType->FreeCount + pMemSliceType->UsedCount == pMemSliceType->TotalCount);
+}

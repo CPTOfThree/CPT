@@ -5,25 +5,26 @@
 #include "CPTBase.h"
 #include "AutoPropertyUnit.h"
 
-typedef void CPTPROPERTYCALLBACK(AutoPropertyUnit *target, PROPERTYKEY propertyKey);
+typedef void CPTPROPERTYCALLBACK(AutoPropertyUnit *target, CPTUINT propertyIndex);
+
 typedef CPTPROPERTYCALLBACK* PCPTPropertyCallback;
 
 typedef struct CPTPropertyInfo{
-	
+	CPTUINT   ProperyIndex;
+	CPTSTRING PropertyName;
+	CPTSTRING Descrption;
+	PCallBackList pCallbackList;
 }* PCPTPropertyInfo;
 
+typedef std::list<PCPTPropertyCallback> CallBackList,* PCallBackList;
 
-
-class PropertyManager
+class CPTPropertyManager
 {
 public:
-	PropertyManager(void);
-	~PropertyManager(void);
-
 	/*
 		注册指定的属性名称和描述，并返回注册的属性对象
 	*/
-	PCPTPropertyInfo RegisterProperty(std::string propertyName, std::string description);
+	const PCPTPropertyInfo RegisterProperty(std::string propertyName, std::string description);
 
 	/*
 		添加一个属性变化监视器，指定一个监控回调函数，监控的对象类型,返回一个代表该监控实体的
@@ -42,7 +43,11 @@ public:
 	bool RemovePropertyChangedObserver(UnitType unitType, CPTUINT callbackHandle);
 
 private:
+	CPTPropertyManager(void);
+	~CPTPropertyManager(void);
+
 	static const CPTUINT MAX_PROPERTY_COUNT = 128;
+	static CPTPropertyManager* _instance;
 
 	PCPTPropertyInfo _properties;
 };
