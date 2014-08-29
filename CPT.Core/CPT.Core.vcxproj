@@ -75,9 +75,9 @@
     <ClCompile Include="CPTMemoryManager.cpp" />
     <ClCompile Include="CPTPlayController.cpp" />
     <ClCompile Include="CPTPlayer.cpp" />
+    <ClCompile Include="CPTPropertyManager.cpp" />
     <ClCompile Include="CPTRTLevelInfo.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PropertyManager.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
     <ClCompile Include="StartGameScene.cpp" />
   </ItemGroup>
@@ -89,9 +89,9 @@
     <ClInclude Include="CPTMemoryManager.h" />
     <ClInclude Include="CPTPlayController.h" />
     <ClInclude Include="CPTPlayer.h" />
+    <ClInclude Include="CPTPropertyManager.h" />
     <ClInclude Include="CPTRTLevelInfo.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="PropertyManager.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SelectLevelScene.h" />
     <ClInclude Include="StartGameScene.h" />

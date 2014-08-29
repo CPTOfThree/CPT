@@ -84,16 +84,16 @@ CPTMemoryManager::~CPTMemoryManager(void)
 		this->_pBuffer = NULL;
 	}
 }
-
-CPTMemoryManager *CPTMemoryManager::GetInstance()
-{
-	if (NULL == _instance)
-	{
-		_instance = new CPTMemoryManager();
-	}
-
-	return _instance;
-}
+//
+//CPTMemoryManager *CPTMemoryManager::GetInstance()
+//{
+//	if (NULL == _instance)
+//	{
+//		_instance = new CPTMemoryManager();
+//	}
+//
+//	return _instance;
+//}
 
 CPT_RESULT CPTMemoryManager::Alloc(CPTUINT memBytes, PCPTMemoryHandle handleInfo)
 {

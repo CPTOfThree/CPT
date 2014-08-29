@@ -9,14 +9,15 @@ typedef void CPTPROPERTYCALLBACK(AutoPropertyUnit *target, CPTUINT propertyIndex
 
 typedef CPTPROPERTYCALLBACK* PCPTPropertyCallback;
 
+
+typedef std::list<PCPTPropertyCallback> CallBackList,* PCallBackList;
+
 typedef struct CPTPropertyInfo{
 	CPTUINT   ProperyIndex;
 	CPTSTRING PropertyName;
 	CPTSTRING Descrption;
 	PCallBackList pCallbackList;
 }* PCPTPropertyInfo;
-
-typedef std::list<PCPTPropertyCallback> CallBackList,* PCallBackList;
 
 class CPTPropertyManager
 {

@@ -79,7 +79,7 @@ class CPTMemoryManager
 	CPT_RESULT GetMemoryDiagnosis(PCPTMemoryDiagnosisInfo pMemDiagInfo);
 
 private:
-	static CPTMemoryManager* _instance;
+	//static CPTMemoryManager* _instance;
 
 	static const CPTUINT  MAX_MEM_SIZE_TYPE = 20;
 	static const CPTUINT  MAX_BUFFER_COUNT = 10000;
