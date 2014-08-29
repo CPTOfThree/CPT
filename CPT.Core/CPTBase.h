@@ -61,6 +61,7 @@ using namespace cocos2d::ui;
 
 #define FatalError(p)
 
+#define _CPT_NO_CONTRACT
 #define _CPT_ASSERT_M(cond,message)
 #define _CPT_ASSERT(cond)         _CPT_ASSERT_M(cond,NULL)
 #define _CPT_ASSERT_NOT_NULL(OBJ) _CPT_ASSERT(NULL != (OBJ))

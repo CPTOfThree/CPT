@@ -185,9 +185,9 @@ allocatedEnd:
 void CPTMemoryManager::MarkAllocated(PCPTBufferNode pBuffer)
 {
 	_CPT_ASSERT_VALID_STATE;
-	_CPT_ASSERT(pBuffer != NULL);
+	_CPT_ASSERT_NOT_NULL(pBuffer != NULL);
 	_CPT_ASSERT(!pBuffer->IsInUse);
-	_CPT_ASSERT(pBuffer->Address != NULL);
+	_CPT_ASSERT_NOT_NULL(pBuffer->Address != NULL);
 	_CPT_ASSERT(pBuffer->AllocatedCount == pBuffer->ReleasedCount);
 
 	this->_pMemorySlice[pBuffer->BufferSizeIndex].FreeCount--;
