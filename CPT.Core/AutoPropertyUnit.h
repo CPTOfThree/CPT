@@ -1,4 +1,4 @@
-#include "CPTBase.h"
+#include "../CPT/CPTBase.h"
 
 #pragma once
 class AutoPropertyUnit

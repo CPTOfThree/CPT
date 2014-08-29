@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CPTBase.h"
+#include "../CPT/CPTBase.h"
 #include <fstream>
 #include <sstream>
 

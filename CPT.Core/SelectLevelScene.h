@@ -1,4 +1,5 @@
-#include "CPTBase.h"
+#include "../CPT/CPTBase.h"
+
 #ifndef _SELECT_LEVEL_SCENE_
 #define _SELECT_LEVEL_SCENE_
 

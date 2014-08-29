@@ -2,7 +2,7 @@
 
 #ifndef _CPT_PROPERTY_MANAGER_H_
 #define _CPT_PROPERTY_MANAGER_H_
-#include "CPTBase.h"
+#include "../CPT/CPTBase.h"
 #include "AutoPropertyUnit.h"
 
 typedef void CPTPROPERTYCALLBACK(AutoPropertyUnit *target, CPTUINT propertyIndex);
