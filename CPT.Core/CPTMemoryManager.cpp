@@ -67,7 +67,7 @@ errors:
 	}
 
 	// 分配内存失败，严重错误，需要关闭程序
-	FatalError(CPT_MEMORY_MANAGER_INITIALIZE_FAILED_FAIL);
+	_CPTFatalError(CPT_MEMORY_MANAGER_INITIALIZE_FAILED_FAIL);
 }
 
 CPTMemoryManager::~CPTMemoryManager(void)
