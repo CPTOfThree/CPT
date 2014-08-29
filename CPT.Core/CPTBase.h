@@ -1,6 +1,8 @@
 #ifndef _CPT_BASE_H_
 #define _CPT_BASE_H_
 
+#define DEBUG
+
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "ui/UILayout.h" 
@@ -19,6 +21,8 @@ using namespace cocos2d::ui;
 #define CPTFLOAT    float
 #define CPTBOOL     bool
 #define CPTULONG    unsigned long
+#define CPTBYTE     char
+#define CPTSTRING   std::string
 
 #define CPT_PROPERTY_KEY CPTINT
 #define CPT_PROPERTY_VALUE CPTFLOAT
@@ -58,6 +62,18 @@ using namespace cocos2d::ui;
 #define CPTMakeTEvent(callback)     toucheventselector(callback)
 //#define CPTMakeTEvent(callback)     SEL_TouchEvent(callback)
 
+#ifdef DEBUG
+
+#define _CPT_INITIALIZE_FLAG_FIELD CPTBOOL _initSuccessfully
+#define _CPT_ASSERT_VALID_STATE   _CPT_ASSERT(this->_initSuccessfully)
+#define _CPT_INITIALIZE_SUCCESS    this->_initSuccessfully = true
+#define _CPT_INITIALIZE_FAIL       this->_initSuccessfully = false
+#else
+#define _CPT_INITIALIZE_FLAG_FIELD CPTBOOL
+#define _CPT_ASSERT_VALID_STATE
+#define _CPT_INITIALIZE_SUCCESS
+#define _CPT_INITIALIZE_FAIL
+#endif
 
 #define FatalError(p)
 
@@ -83,14 +99,6 @@ public:
 	void setX(CPTINT x){ this->x = x; }
 	void setY(CPTINT y){ this->y = y; }
 };
-
-//
-//typedef struct CPTLISTENTRY
-//{
-//	VOID* Entry;
-//	PCPTListEntry Privious;
-//	PCPTListEntry Next;
-//}* PCPTListEntry;
 
 typedef struct cptUnitPath
 {

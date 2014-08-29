@@ -3,7 +3,6 @@
 #ifndef _CPT_MEMORY_MANAGER_H_
 #define _CPT_MEMORY_MANAGER_H_
 
-#define _CPT_ASSERT_VALID_STATE _CPT_ASSERT(this->_initSuccessfully)
 
 /*
 	定义的内存信息结构体，包括该内存对应的句柄索引，开始地址以及
@@ -52,35 +51,12 @@ typedef struct CPTMemorySliceType
 
 class CPTMemoryManager
 {
-private:
-	static CPTMemoryManager* _instance;
-
-	static const CPTUINT  MAX_MEM_SIZE_TYPE = 20;
-	static const CPTUINT  MAX_BUFFER_COUNT = 10000;
-	static const CPTUINT  MAX_ALLOC_BYTES_LIMIT = 100000000;
-	static const CPTUINT  MIN_MEM_SLICE_SIZE = 16;
-
-	CPTUINT   _fixedSizeBySelf;
-	CPTUINT   _userAllcatedBytes;
-	CPTUINT   _allocatedBufferCount;
-	CPTBOOL   _initSuccessfully;
-
-	PCPTBufferNode      _pBuffer;
-	PCPTMemorySliceType _pMemorySlice;
-
-	CPTMemoryManager(void);
-	~CPTMemoryManager(void);
-
-	inline CPT_RESULT DoAlloc(CPTUINT memBytes, PCPTMemoryHandle handleInfo);
-	inline void       InitBuffer(PCPTBufferNode pBuffer);
-	inline void       MarkAllocated(PCPTBufferNode pBuffer);
-	inline void       ZeroBuffer(CPTUINT* pBuffer, CPTUINT sizeInBytes);
-public:
+	public:
 
 	/*
 		获取内存管理器的唯一实例
 	*/
-	//static CPTMemoryManager* GetInstance();
+	static CPTMemoryManager* GetInstance();
 
 	/*
 		使用该接口分配指定大小的内存块，返回该内存块对应的句柄信息
@@ -101,6 +77,33 @@ public:
 		获取当前运行时内存的诊断信息，用于软件调试和分析当前内存的使用状况
 	*/
 	CPT_RESULT GetMemoryDiagnosis(PCPTMemoryDiagnosisInfo pMemDiagInfo);
+
+private:
+	static CPTMemoryManager* _instance;
+
+	static const CPTUINT  MAX_MEM_SIZE_TYPE = 20;
+	static const CPTUINT  MAX_BUFFER_COUNT = 10000;
+	static const CPTUINT  MAX_ALLOC_BYTES_LIMIT = 100000000;
+	static const CPTUINT  MIN_MEM_SLICE_SIZE = 16;
+
+	CPTUINT  _fixedSizeBySelf;
+	CPTUINT  _userAllcatedBytes;
+	CPTUINT  _userReleasedBytes;
+	CPTUINT  _allocatedBufferCount;
+
+	_CPT_INITIALIZE_FLAG_FIELD;
+
+	PCPTBufferNode      _pBuffer;
+	PCPTMemorySliceType _pMemorySlice;
+
+	CPTMemoryManager(void);
+	~CPTMemoryManager(void);
+
+	inline CPT_RESULT DoAlloc(CPTUINT memBytes, PCPTMemoryHandle handleInfo);
+	inline CPT_RESULT InitBuffer(PCPTBufferNode pBuffer);
+	inline void       MarkAllocated(PCPTBufferNode pBuffer);
+	inline void       MarkFree(PCPTBufferNode pBuffer);
+	inline void       ZeroBuffer(const CPTUINT* pBuffer,const CPTUINT sizeInBytes);
 };
 
 #endif
