@@ -1,4 +1,4 @@
-#include "CPTBase.h"
+#include "../CPT/CPTBase.h"
 
 #ifndef _CPT_MEMORY_MANAGER_H_
 #define _CPT_MEMORY_MANAGER_H_
