@@ -8,13 +8,13 @@ CPTConfigNode::~CPTConfigNode(void)
 {
 }
 
-char* CPTConfigNode::getKeys()
+CPTSTRING CPTConfigNode::GetKeys()
 {
 	//return _keyAndValues._Key;
 	return nullptr;
 }
 
-char* CPTConfigNode::getValue(char* key)
+CPTSTRING CPTConfigNode::GetValue(CPTSTRING key)
 {
 	auto iter = _keyAndValues.find(key);
 	if (iter != _keyAndValues.end())
@@ -26,7 +26,7 @@ char* CPTConfigNode::getValue(char* key)
 	}
 }
 
-void CPTConfigNode::setValue(char* key, char* newValue)
+void CPTConfigNode::setValue(CPTSTRING key, CPTSTRING newValue)
 {
 	auto iter = _keyAndValues.find(key);
 	if (iter != _keyAndValues.end())
@@ -34,12 +34,12 @@ void CPTConfigNode::setValue(char* key, char* newValue)
 		iter->second = newValue;
 	}else
 	{
-		_keyAndValues.insert(map<char*, char*>::value_type(key, newValue));
+		_keyAndValues.insert(map<CPTSTRING, CPTSTRING>::value_type(key, newValue));
 		//_keyAndValues.insert(key, newValue);
 	}
 }
 
-CPTConfigNode* CPTConfigNode::createNode(char* name)
+CPTConfigNode* CPTConfigNode::createNode(CPTSTRING name)
 {
 	CPTConfigNode* node = new CPTConfigNode;
 	node->setNodeName(name);
@@ -47,22 +47,22 @@ CPTConfigNode* CPTConfigNode::createNode(char* name)
 	return node;
 }
 
-void CPTConfigNode::setNodeName(char* nodeName)
+void CPTConfigNode::setNodeName(CPTSTRING nodeName)
 {
 	this->nodeName = nodeName;
 }
 
-char* CPTConfigNode::getNodeName()
+CPTSTRING CPTConfigNode::getNodeName()
 {
 	return this->nodeName;
 }
 
-char* CPTConfigNode::getNodePath()
+CPTSTRING CPTConfigNode::GetNodePath()
 {
 	return this->nodePath;
 }
 
-CPTConfigNode* CPTConfigNode::getNode(char* name)
+CPTConfigNode* CPTConfigNode::getNode(CPTSTRING name)
 {
 	auto iter = _subNodes.begin();
 	while (iter != _subNodes.end())
@@ -83,7 +83,7 @@ void CPTConfigNode::setWriter(IWriter* writer)
 	this->writer = writer;
 }
 
-void CPTConfigNode::save()
+void CPTConfigNode::Save()
 {
 	if (this->writer == nullptr)
 	{
@@ -93,9 +93,9 @@ void CPTConfigNode::save()
 	// 调用writer的写方法
 }
 
-NodeType CPTConfigNode::getNodeType(char* nodePath)
+NodeType CPTConfigNode::getNodeType(const CPTSTRING nodePath)
 {
-	int length = strlen(nodePath);
+	int length = nodePath.length();
 	char lastChar = nodePath[length - 1];
 	switch (lastChar)
 	{
