@@ -22,7 +22,7 @@ CPTConfigurationManager::~CPTConfigurationManager(void)
 	delete this->_cptConfigurationManager;
 }
 
-CPTConfigNode* CPTConfigurationManager::loadConfig(char* path)
+CPTConfigNode* CPTConfigurationManager::LoadConfig(const CPTSTRING path)
 {
 	CPTConfigNode* node = new CPTConfigNode;
 	auto nodeType = CPTConfigNode::getNodeType(path);
