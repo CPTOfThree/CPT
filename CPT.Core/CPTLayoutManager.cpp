@@ -1,7 +1,7 @@
 #include "CPTLayoutManager.h"
 
 
-CPTLayoutManager::CPTLayoutManager(int level)
+CPTLayoutManager::CPTLayoutManager(CPTINT level)
 { 
 	//CPTLayoutManager::InitLayout();  
 	//this->_isInit = false;
@@ -15,7 +15,7 @@ CPTLayoutManager::~CPTLayoutManager(void)
 {
 }
 
-char* CPTLayoutManager::_getFileName(int level)
+char* CPTLayoutManager::_getFileName(CPTINT level)
 {
 	/*
 	char* map = "map/";
@@ -55,7 +55,7 @@ CPTUnitPath* CPTLayoutManager::GetPath(UnitType unitType)
 	}
 }
 
-void CPTLayoutManager::InitLayout(char* filePath)
+void CPTLayoutManager::InitLayout(CPTSTRING filePath)
 {
 	// 解析该目录下的地图位置文件
 	// 分不同的unitType和pathType类解析

@@ -7,19 +7,19 @@
 class CPTLayoutManager
 { 
 public:  
-	CPTLayoutManager(int level);
+	CPTLayoutManager(CPTINT level);
 	~CPTLayoutManager(void);
 
 	//POINTLIST GetAllFriendPositions();
 
 	//CPTPATH CreateEnemyPath();
 	void StartScene(Scene* scene);
-	void InitLayout(char* filePath);
+	void InitLayout(CPTSTRING filePath);
 	CPTUnitPath* GetPath(UnitType unitType);
 private:
-	char* _getFileName(int level);
+	char* _getFileName(CPTINT level);
 	CPTUnitPath* _pathes;
-	int  _pathesCount;
-	bool _isInit;
+	CPTINT  _pathesCount;
+	CPTBOOL _isInit;
 };
 
