@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\CPT.Core\CPTBase.h">
+    <ClInclude Include="CPTBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

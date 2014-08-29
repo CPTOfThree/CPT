@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\cocos2d-x-3.2\cocos\editor-support;..\..\cocos2d-x-3.2;..\..\cocos2d-x-3.2\cocos\platform\win32;..\..\cocos2d-x-3.2\extensions;..\..cocos2d-x-3.2\cocos\base;..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\external\win32-specific\gles\include;..\..\cocos2d-x-3.2\external\glfw3\include\win32;..\..\cocos2d-x-3.2\external\win32-specific\gles\include\OGLES;..\..\cocos2d-x-3.2\external;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\cocos2d-x-3.2\cocos\editor-support;..\CPT;..\..\cocos2d-x-3.2;..\..\cocos2d-x-3.2\cocos\platform\win32;..\..\cocos2d-x-3.2\extensions;..\..cocos2d-x-3.2\cocos\base;..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\external\win32-specific\gles\include;..\..\cocos2d-x-3.2\external\glfw3\include\win32;..\..\cocos2d-x-3.2\external\win32-specific\gles\include\OGLES;..\..\cocos2d-x-3.2\external;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\cocos2d-x-3.2\build\Debug.win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -84,7 +84,6 @@
   <ItemGroup>
     <ClInclude Include="AppDelegate.h" />
     <ClInclude Include="AutoPropertyUnit.h" />
-    <ClInclude Include="CPTBase.h" />
     <ClInclude Include="CPTLayoutManager.h" />
     <ClInclude Include="CPTMemoryManager.h" />
     <ClInclude Include="CPTPlayController.h" />

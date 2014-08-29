@@ -2,7 +2,7 @@
 
 #include <map>
 #include <list>
-#include "../CPT/CPTBase.h"
+#include "CPTBase.h"
 #include "ConfigBase.h"
 #include "IWriter.h"
 

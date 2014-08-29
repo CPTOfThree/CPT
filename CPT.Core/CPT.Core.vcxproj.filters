@@ -56,9 +56,6 @@
     <ClInclude Include="AutoPropertyUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CPTBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CPTLayoutManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>

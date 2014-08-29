@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\CPT.Core\CPTBase.h" />
+    <ClInclude Include="CPTBase.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B7219F2D-5DC1-41A7-A8D1-BA2739D21BF7}</ProjectGuid>
