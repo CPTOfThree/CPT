@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -11,12 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8B63747F-4DBD-4C55-8DD9-42D2A64B8285}</ProjectGuid>
-    <RootNamespace>CPTCore</RootNamespace>
+    <ProjectGuid>{D74F3CBF-CA7E-41F9-8057-317C9F9BE8D3}</ProjectGuid>
+    <RootNamespace>CPTTest</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -24,7 +24,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\cocos2d-x-3.2\cocos\editor-support;..\CPT;..\..\cocos2d-x-3.2;..\..\cocos2d-x-3.2\cocos\platform\win32;..\..\cocos2d-x-3.2\extensions;..\..cocos2d-x-3.2\cocos\base;..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\external\win32-specific\gles\include;..\..\cocos2d-x-3.2\external\glfw3\include\win32;..\..\cocos2d-x-3.2\external\win32-specific\gles\include\OGLES;..\..\cocos2d-x-3.2\external;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\cocos2d-x-3.2\cocos\editor-support;..\CPT;..\..\cocos2d-x-3.2;..\..\cocos2d-x-3.2\cocos\platform\win32;..\..\cocos2d-x-3.2\extensions;..\..cocos2d-x-3.2\cocos\base;..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\external\win32-specific\gles\include;..\..\cocos2d-x-3.2\external\glfw3\include\win32;..\..\cocos2d-x-3.2\external\win32-specific\gles\include\OGLES;..\..\cocos2d-x-3.2\external;..\CPT.Core;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\cocos2d-x-3.2\build\Debug.win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -51,7 +51,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libcocos2d.lib;libGUI.lib;ws2_32.lib;glew32.lib;glfw3.lib;libCocosStudio.lib;libtiff.lib;libpng.lib;libjpeg.lib;OpenGL32.Lib;libcurl_imp.lib;libExtensions.lib;websockets.lib;libzlib.lib;libwebp.lib;libSpine.lib;libNetwork.lib;libLocalStorage.lib;lua51.lib;liblua.lib;libiconv.lib;libchipmunk.lib;libAudio.lib;freetype250.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>WSOCK32.LIB;opengl32.lib;glew32.lib;libcocos2d.lib;freetype250.lib;ws2_32.lib;glfw3.lib;libAudio.lib;libBox2D.lib;libchipmunk.lib;libCocosBuilder.lib;libCocosStudio.lib;libcurl_imp.lib;libExtensions.lib;libGUI.lib;libiconv.lib;libjpeg.lib;libLocalStorage.lib;liblua.lib;libNetwork.lib;libpng.lib;libSpine.lib;libtiff.lib;libzlib.lib;libwebp.lib;websockets.lib;lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -69,37 +69,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AppDelegate.cpp" />
-    <ClCompile Include="AutoPropertyUnit.cpp" />
-    <ClCompile Include="CPTLayoutManager.cpp" />
-    <ClCompile Include="CPTMemoryManager.cpp" />
-    <ClCompile Include="CPTPlayController.cpp" />
-    <ClCompile Include="CPTPlayer.cpp" />
-    <ClCompile Include="CPTPropertyManager.cpp" />
-    <ClCompile Include="CPTRTLevelInfo.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="SelectLevelScene.cpp" />
-    <ClCompile Include="StartGameScene.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AppDelegate.h" />
-    <ClInclude Include="AutoPropertyUnit.h" />
-    <ClInclude Include="CPTLayoutManager.h" />
-    <ClInclude Include="CPTMemoryManager.h" />
-    <ClInclude Include="CPTPlayController.h" />
-    <ClInclude Include="CPTPlayer.h" />
-    <ClInclude Include="CPTPropertyManager.h" />
-    <ClInclude Include="CPTRTLevelInfo.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="SelectLevelScene.h" />
-    <ClInclude Include="StartGameScene.h" />
+    <ClInclude Include="MyAppDelegate.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="game.aps" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyAppDelegate.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="game.rc" />
+    <ProjectReference Include="..\CPT.Core\CPT.Core.vcxproj">
+      <Project>{8b63747f-4dbd-4c55-8dd9-42d2a64b8285}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
