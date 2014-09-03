@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "GameScene.h"
+#include "CPTConfigurationManager.h"
 
 class MyAppDelegate : private cocos2d::Application
 {

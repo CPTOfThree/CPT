@@ -2,7 +2,9 @@
 
 bool GameScene::init()
 {
-	if (CCScene::init()){
+	if (Scene::init()){
+		TouchLayer* touchLayer = TouchLayer::create();
+		this->addChild(touchLayer);
 	}
 
 	return true;

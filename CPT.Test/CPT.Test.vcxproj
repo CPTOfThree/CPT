@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\cocos2d-x-3.2\cocos\editor-support;..\CPT;..\..\cocos2d-x-3.2;..\..\cocos2d-x-3.2\cocos\platform\win32;..\..\cocos2d-x-3.2\extensions;..\..cocos2d-x-3.2\cocos\base;..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\external\win32-specific\gles\include;..\..\cocos2d-x-3.2\external\glfw3\include\win32;..\..\cocos2d-x-3.2\external\win32-specific\gles\include\OGLES;..\..\cocos2d-x-3.2\external;..\CPT.Core;$(IncludePath)</IncludePath>
+    <IncludePath>..\CPT.Configuration;..\..\cocos2d-x-3.2\cocos\editor-support;..\CPT;..\..\cocos2d-x-3.2;..\..\cocos2d-x-3.2\cocos\platform\win32;..\..\cocos2d-x-3.2\extensions;..\..cocos2d-x-3.2\cocos\base;..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\external\win32-specific\gles\include;..\..\cocos2d-x-3.2\external\glfw3\include\win32;..\..\cocos2d-x-3.2\external\win32-specific\gles\include\OGLES;..\..\cocos2d-x-3.2\external;..\CPT.Core;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\cocos2d-x-3.2\build\Debug.win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -69,14 +69,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BackgroundLayer.h" />
+    <ClInclude Include="EnemyPlayer.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MyAppDelegate.h" />
+    <ClInclude Include="PlayLayer.h" />
+    <ClInclude Include="TouchLayer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackgroundLayer.cpp" />
+    <ClCompile Include="EnemyPlayer.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyAppDelegate.cpp" />
+    <ClCompile Include="PlayLayer.cpp" />
+    <ClCompile Include="TouchLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CPT.Core\CPT.Core.vcxproj">
