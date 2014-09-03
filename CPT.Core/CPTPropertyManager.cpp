@@ -70,7 +70,7 @@ CPT_RESULT CPTPropertyManager::DoRegisterProperty(CPTSTRING propertyName, CPTSTR
 
 	this->_properties[this->_registeredCount].PropertyName = propertyName;
 	this->_properties[this->_registeredCount].Descrption   = description;
-	this->_properties[this->_registeredCount].ProperyIndex = this->_registeredCount;
+	this->_properties[this->_registeredCount].PropertyIndex = this->_registeredCount;
 
 	*pPCPTPropertyInfo = &this->_properties[this->_registeredCount];
 	this->_registeredCount++;

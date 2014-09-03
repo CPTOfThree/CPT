@@ -13,7 +13,7 @@ typedef CPTPROPERTYCALLBACK* PCPTPropertyCallback;
 typedef std::list<PCPTPropertyCallback> CallBackList,* PCallBackList;
 
 typedef struct CPTPropertyInfo{
-	CPTUINT   ProperyIndex;
+	CPTUINT   PropertyIndex;
 	CPTSTRING PropertyName;
 	CPTSTRING Descrption;
 	PCallBackList pCallbackList;
