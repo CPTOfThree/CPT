@@ -69,7 +69,7 @@
     <ClCompile Include="WalkAbility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TouchPorxy.cpp">
+    <ClCompile Include="TouchProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -131,7 +131,7 @@
     <ClInclude Include="WalkAbility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TouchPorxy.h">
+    <ClInclude Include="TouchProxy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,7 +6,7 @@
 #include "Log.h"
 #include "CPTEnemyUnit.h"
 #include "minwindef.h"
-
+#include "TouchProxy.h"
 class CPTPlayController
 {
 public:
@@ -19,5 +19,8 @@ public:
 	void RestartPlay();
 	//friend void CALLBACK TimeProc(HWND hWnd, UINT nMSG, UINT nTimerId, DWORD dwTime);
 	CPTMainGameScene* mainGameScene;
+
+private:
+	TouchProxy touchProxy;
 };
 
