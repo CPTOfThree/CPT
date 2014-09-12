@@ -3,6 +3,7 @@
 #include "BackgroundLayer.h"
 #include "CPTEnemyUnit.h"
 #include "MainGameLayer.h"
+#include "CPTRTLevelInfo.h"
 class CPTMainGameScene : public Scene
 {
 public:
@@ -12,5 +13,6 @@ public:
 	virtual bool init();
 	virtual void loadGameLayers();
 	void addEnemy(CPTEnemyUnit* enemyUnit);
+	void onAttach(CPTFLOAT x, CPTFLOAT y);
 };
 

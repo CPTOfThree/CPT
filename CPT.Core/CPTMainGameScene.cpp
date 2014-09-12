@@ -30,3 +30,8 @@ void CPTMainGameScene::addEnemy(CPTEnemyUnit* enemyUnit)
 {
 	this->addChild(enemyUnit->GetNode());
 }
+
+void CPTMainGameScene::onAttach(CPTFLOAT x, CPTFLOAT y)
+{
+	auto rtLevelInfo = CPTRTLevelInfo::getRTLevelInfo();
+}
