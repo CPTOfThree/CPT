@@ -1,9 +1,10 @@
-#include "vld.h"
+//#include "vld.h"
 #ifndef _CPT_BASE_H_
 #define _CPT_BASE_H_
 
 #define DEBUG
 
+#include "..\..\VLD\include\vld.h"
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "ui/UILayout.h" 
