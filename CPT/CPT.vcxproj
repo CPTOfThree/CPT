@@ -11,7 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CPTAssert.h" />
     <ClInclude Include="CPTBase.h" />
+    <ClInclude Include="Log.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B7219F2D-5DC1-41A7-A8D1-BA2739D21BF7}</ProjectGuid>
@@ -42,8 +44,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\;..\..\cocos2d-x-3.2\extensions;..\..\cocos2d-x-3.2\external;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\cocos2d-x-3.2\build\Debug.win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\;..\..\cocos2d-x-3.2\extensions;..\..\cocos2d-x-3.2\external;..\..\cocos2d-x-3.2\cocos\base;..\..\VLD\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\cocos2d-x-3.2\build\Debug.win32;..\..\VLD\lib\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -71,6 +71,7 @@
   <ItemGroup>
     <ClInclude Include="BackgroundLayer.h" />
     <ClInclude Include="EnemyPlayer.h" />
+    <ClInclude Include="FirendLayer.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MyAppDelegate.h" />
@@ -80,6 +81,7 @@
   <ItemGroup>
     <ClCompile Include="BackgroundLayer.cpp" />
     <ClCompile Include="EnemyPlayer.cpp" />
+    <ClCompile Include="FirendLayer.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyAppDelegate.cpp" />

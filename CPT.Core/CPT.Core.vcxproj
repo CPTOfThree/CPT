@@ -16,7 +16,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\cocos2d-x-3.2\cocos\editor-support;..\CPT;..\..\cocos2d-x-3.2;..\..\cocos2d-x-3.2\cocos\platform\win32;..\..\cocos2d-x-3.2\extensions;..\..cocos2d-x-3.2\cocos\base;..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\external\win32-specific\gles\include;..\..\cocos2d-x-3.2\external\glfw3\include\win32;..\..\cocos2d-x-3.2\external\win32-specific\gles\include\OGLES;..\..\cocos2d-x-3.2\external;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\cocos2d-x-3.2\cocos\editor-support;..\CPT;..\..\cocos2d-x-3.2;..\..\cocos2d-x-3.2\cocos\platform\win32;..\..\cocos2d-x-3.2\extensions;..\..\cocos2d-x-3.2\cocos\base;..\..\cocos2d-x-3.2\cocos;..\..\cocos2d-x-3.2\external\win32-specific\gles\include;..\..\cocos2d-x-3.2\external\glfw3\include\win32;..\..\cocos2d-x-3.2\external\win32-specific\gles\include\OGLES;..\..\cocos2d-x-3.2\external;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\cocos2d-x-3.2\build\Debug.win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -71,6 +71,10 @@
   <ItemGroup>
     <ClCompile Include="AppDelegate.cpp" />
     <ClCompile Include="AutoPropertyUnit.cpp" />
+    <ClCompile Include="BackgroundLayer.cpp" />
+    <ClCompile Include="CPTAbility.cpp" />
+    <ClCompile Include="CPTEnemyUnit.cpp" />
+    <ClCompile Include="CPTFirendUnit.cpp" />
     <ClCompile Include="CPTLayoutManager.cpp" />
     <ClCompile Include="CPTMemoryManager.cpp" />
     <ClCompile Include="CPTPlayController.cpp" />
@@ -78,12 +82,19 @@
     <ClCompile Include="CPTPropertyManager.cpp" />
     <ClCompile Include="CPTRTLevelInfo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainGameLayer.cpp" />
+    <ClCompile Include="CPTMainGameScene.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
     <ClCompile Include="StartGameScene.cpp" />
+    <ClCompile Include="WalkAbility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppDelegate.h" />
     <ClInclude Include="AutoPropertyUnit.h" />
+    <ClInclude Include="BackgroundLayer.h" />
+    <ClInclude Include="CPTAbility.h" />
+    <ClInclude Include="CPTEnemyUnit.h" />
+    <ClInclude Include="CPTFirendUnit.h" />
     <ClInclude Include="CPTLayoutManager.h" />
     <ClInclude Include="CPTMemoryManager.h" />
     <ClInclude Include="CPTPlayController.h" />
@@ -91,9 +102,12 @@
     <ClInclude Include="CPTPropertyManager.h" />
     <ClInclude Include="CPTRTLevelInfo.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="MainGameLayer.h" />
+    <ClInclude Include="CPTMainGameScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SelectLevelScene.h" />
     <ClInclude Include="StartGameScene.h" />
+    <ClInclude Include="WalkAbility.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="game.aps" />

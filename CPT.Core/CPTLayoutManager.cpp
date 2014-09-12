@@ -7,7 +7,9 @@ CPTLayoutManager::CPTLayoutManager(CPTINT level)
 	//this->_isInit = false;
 	// 读取对应level的地图，并将其替换现有的Scene
 	auto fileName = this->_getFileName(level);
-	auto scene = dynamic_cast<Scene*>(CPTLoadLayoutFromPath(fileName));
+	//auto scene = dynamic_cast<Scene*>(CPTLoadLayoutFromPath(fileName));
+	auto scene = StartGameScene::create();
+	scene->loadBackground(fileName);
 	CCDirector::getInstance()->replaceScene(scene);
 }
 
@@ -53,6 +55,8 @@ CPTUnitPath* CPTLayoutManager::GetPath(UnitType unitType)
 			return &(*_pathes);
 		}
 	}
+
+	return NULL;
 }
 
 void CPTLayoutManager::InitLayout(CPTSTRING filePath)

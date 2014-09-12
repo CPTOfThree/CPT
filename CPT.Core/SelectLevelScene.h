@@ -1,5 +1,5 @@
 #include "../CPT/CPTBase.h"
-
+#include "StartGameScene.h"
 #ifndef _SELECT_LEVEL_SCENE_
 #define _SELECT_LEVEL_SCENE_
 
@@ -10,17 +10,17 @@
 #define CPT_SELECT_LEVEL_BUTTON_NAME_5 "btnLevel5"
 #define CPT_SELECT_LEVEL_BUTTON_NAME_6 "btnLevel6"
 
-class SelectLevel : cocos2d::Layer
+class SelectLevelScene : cocos2d::Scene
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::Scene* createScene();
+    //static cocos2d::Scene* createScene();
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
     
     // implement the "static create()" method manually
-    CREATE_FUNC(SelectLevel);
+    CREATE_FUNC(SelectLevelScene);
 
 private:
 

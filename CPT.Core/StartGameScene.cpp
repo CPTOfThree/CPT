@@ -2,27 +2,12 @@
 #include "StartGameScene.h"
 #include "SelectLevelScene.h"
 
-Scene* StartGame::createScene()
-{
-    // 'scene' is an autorelease object
-    auto scene = Scene::create();
-    
-    // 'layer' is an autorelease object
-    auto layer = StartGame::create();
-
-    // add layer as a child to scene
-    scene->addChild(layer);
-
-    // return the scene
-    return scene;
-}
-
 // on "init" you need to initialize your instance
-bool StartGame::init()
+bool StartGameScene::init()
 {
     //////////////////////////////
     // 1. super init first
-    if ( !Layer::init() )
+    if ( !Scene::init() )
     {
         return false;
     }
@@ -75,15 +60,18 @@ bool StartGame::init()
 	auto btnStartGame    = CPTFindControlByName(pWidget, CPT_START_GAME_BTN, Button);
 	auto btnContinueGame = CPTFindControlByName(pWidget, CPT_CONTINUE_GAME_BTN, Button);
 
-	btnContinueGame->addTouchEventListener(this, CPTMakeTEvent(StartGame::buttonContinueGameCallBack));
-	btnStartGame   ->addTouchEventListener(this, CPTMakeTEvent(StartGame::buttonStartGameCallback));
+	btnContinueGame->addTouchEventListener(this, CPTMakeTEvent(StartGameScene::buttonContinueGameCallBack));
+	btnStartGame   ->addTouchEventListener(this, CPTMakeTEvent(StartGameScene::buttonStartGameCallback));
 	this->addChild(pWidget);
 
     return true;
 } 
 
+void StartGameScene::loadBackground(CPTSTRING path)
+{
+}
 
-void StartGame::buttonStartGameCallback(Ref* pSender, TouchEventType touchType)
+void StartGameScene::buttonStartGameCallback(Ref* pSender, TouchEventType touchType)
 {
 //#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 //	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
@@ -97,11 +85,17 @@ void StartGame::buttonStartGameCallback(Ref* pSender, TouchEventType touchType)
 //#endif
 	// 切换到选择游戏的界面
 	auto director = Director::getInstance();
-	Scene* selectLevelScene = SelectLevel::createScene();
+	Scene* selectLevelScene = (Scene*)SelectLevelScene::create();
 	director->replaceScene(selectLevelScene);
 }
 
-void StartGame::buttonContinueGameCallBack(cocos2d::Ref* pSender, TouchEventType touchType)
+void StartGameScene::buttonContinueGameCallBack(cocos2d::Ref* pSender, TouchEventType touchType)
 {
-
+	auto mainGameScene = CPTMainGameScene::create();
+	CPTRTLevelInfo::getRTLevelInfo(true);
+	auto director = Director::getInstance();
+	director->replaceScene(mainGameScene);
+	auto playController = new CPTPlayController();
+	playController->StartPlay();
+	playController->mainGameScene = mainGameScene;
 }

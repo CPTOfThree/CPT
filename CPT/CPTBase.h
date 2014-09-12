@@ -1,3 +1,4 @@
+#include "vld.h"
 #ifndef _CPT_BASE_H_
 #define _CPT_BASE_H_
 

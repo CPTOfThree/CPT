@@ -2,27 +2,12 @@
 
 #include "SelectLevelScene.h"
 
-Scene* SelectLevel::createScene()
-{
-    // 'scene' is an autorelease object
-    auto scene = Scene::create();
-    
-    // 'layer' is an autorelease object
-	auto layer = SelectLevel::create();
-
-    // add layer as a child to scene
-    scene->addChild(layer);
-
-    // return the scene
-    return scene;
-}
-
 // on "init" you need to initialize your instance
-bool SelectLevel::init()
+bool SelectLevelScene::init()
 {
     //////////////////////////////
     // 1. super init first
-    if ( !Layer::init() )
+    if ( !Scene::init() )
     {
         return false;
     }
@@ -88,7 +73,7 @@ bool SelectLevel::init()
 	for (int i = 0; i < BTN_COUNT; i++)
 	{
 		auto levelButton = CPTFindControlByName(selectLevelLayeout, levelButtons[i], Button);
-		levelButton->addTouchEventListener(this, CPTMakeTEvent(SelectLevel::selectLevelCallback));
+		levelButton->addTouchEventListener(this, CPTMakeTEvent(SelectLevelScene::selectLevelCallback));
 	}
 
 	this->addChild(selectLevelLayeout);
@@ -97,8 +82,12 @@ bool SelectLevel::init()
 } 
 
 
-void SelectLevel::selectLevelCallback(Ref* pSender, TouchEventType touchType)
+void SelectLevelScene::selectLevelCallback(Ref* pSender, TouchEventType touchType)
 {
+	/*auto scene = StartGameScene::create();
+	auto director = Director::getInstance();
+	director->replaceScene(scene);*/
+	
 //#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 //	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
 //    return;
