@@ -86,6 +86,7 @@
     <ClCompile Include="CPTMainGameScene.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
     <ClCompile Include="StartGameScene.cpp" />
+    <ClCompile Include="TouchPorxy.cpp" />
     <ClCompile Include="WalkAbility.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +108,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="SelectLevelScene.h" />
     <ClInclude Include="StartGameScene.h" />
+    <ClInclude Include="TouchPorxy.h" />
     <ClInclude Include="WalkAbility.h" />
   </ItemGroup>
   <ItemGroup>

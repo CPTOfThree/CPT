@@ -55,6 +55,5 @@ CPTEnemyUnit* CPTRTLevelInfo::HitTestEnemys(CPTFLOAT x, CPTFLOAT y)
 			unit = (*iter);
 		}
 	}
-	
 	return unit;
 }

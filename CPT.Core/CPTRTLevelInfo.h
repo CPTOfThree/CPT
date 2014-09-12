@@ -4,7 +4,7 @@
 #include <list>
 #include "CPTFirendUnit.h"
 #include "CPTEnemyUnit.h"
-#include "CPTMainGameScene.h"
+
 #include "CPTLayoutManager.h"
 using namespace std;
 
@@ -19,7 +19,7 @@ public:
 	CPTFirendUnit* HitTestFirend(CPTFLOAT x, CPTFLOAT y);
 	CPTEnemyUnit* HitTestEnemys(CPTFLOAT x, CPTFLOAT y);
 	CPTINT level;
-	CPTMainGameScene* mainGameScene;
+	//CPTMainGameScene* mainGameScene;
 
 private:
 	CPTRTLevelInfo(void);

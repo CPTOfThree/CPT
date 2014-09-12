@@ -3,7 +3,7 @@
 #include "BackgroundLayer.h"
 #include "CPTEnemyUnit.h"
 #include "MainGameLayer.h"
-#include "CPTRTLevelInfo.h"
+//#include "CPTRTLevelInfo.h"
 class CPTMainGameScene : public Scene
 {
 public:

@@ -33,5 +33,13 @@ void CPTMainGameScene::addEnemy(CPTEnemyUnit* enemyUnit)
 
 void CPTMainGameScene::onAttach(CPTFLOAT x, CPTFLOAT y)
 {
+	/*
 	auto rtLevelInfo = CPTRTLevelInfo::getRTLevelInfo(false);
+	AutoPropertyUnit* obj = rtLevelInfo->HitTestEnemys(x, y);
+	if (obj == nullptr)
+	{
+		obj = rtLevelInfo->HitTestFirend(x, y);	
+	}
+
+	*/
 }
