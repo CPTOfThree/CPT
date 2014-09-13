@@ -9,11 +9,12 @@
 #include "cocos2d.h"
 #include "AutoPropertyUnit.h"
 USING_NS_CC;
-class CPTFirendUnit : public AutoPropertyUnit
+
+class CPTFriendUnit : public AutoPropertyUnit
 {
 public:
-	CPTFirendUnit(Sprite* node);
-	~CPTFirendUnit(void);
+	CPTFriendUnit(Sprite* node);
+	~CPTFriendUnit(void);
 	Sprite* GetNode();
 	CPTBOOL IsHit(CPTFLOAT x, CPTFLOAT y);
 	UnitType GetUnitType();

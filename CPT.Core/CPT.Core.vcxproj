@@ -74,7 +74,7 @@
     <ClCompile Include="BackgroundLayer.cpp" />
     <ClCompile Include="CPTAbility.cpp" />
     <ClCompile Include="CPTEnemyUnit.cpp" />
-    <ClCompile Include="CPTFirendUnit.cpp" />
+    <ClCompile Include="CPTFriendUnit.cpp" />
     <ClCompile Include="CPTLayoutManager.cpp" />
     <ClCompile Include="CPTMemoryManager.cpp" />
     <ClCompile Include="CPTPlayController.cpp" />
@@ -95,7 +95,7 @@
     <ClInclude Include="BackgroundLayer.h" />
     <ClInclude Include="CPTAbility.h" />
     <ClInclude Include="CPTEnemyUnit.h" />
-    <ClInclude Include="CPTFirendUnit.h" />
+    <ClInclude Include="CPTFriendUnit.h" />
     <ClInclude Include="CPTLayoutManager.h" />
     <ClInclude Include="CPTMemoryManager.h" />
     <ClInclude Include="CPTPlayController.h" />

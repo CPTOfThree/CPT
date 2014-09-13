@@ -34,14 +34,14 @@ list<CPTEnemyUnit*>* CPTRTLevelInfo::GetEnemys()
 	return this->enemys;
 }
 
-list<CPTFirendUnit*>* CPTRTLevelInfo::GetFirends()
+list<CPTFriendUnit*>* CPTRTLevelInfo::GetFirends()
 {
 	return this->firends;
 }
 
-CPTFirendUnit* CPTRTLevelInfo::HitTestFirend(CPTFLOAT x, CPTFLOAT y)
+CPTFriendUnit* CPTRTLevelInfo::HitTestFirend(CPTFLOAT x, CPTFLOAT y)
 {
-	CPTFirendUnit* unit = NULL;
+	CPTFriendUnit* unit = NULL;
 	for (auto iter = this->firends->begin(); iter != this->firends->end(); iter++)
 	{
 		if ((*iter)->IsHit(x, y))

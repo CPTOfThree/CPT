@@ -1,23 +1,23 @@
-#include "CPTFirendUnit.h"
+#include "CPTFriendUnit.h"
 
 
-CPTFirendUnit::CPTFirendUnit(Sprite* node)
+CPTFriendUnit::CPTFriendUnit(Sprite* node)
 {
 	this->_unitType = UnitType::Friend;
 	this->node = node;
 }
 
 
-CPTFirendUnit::~CPTFirendUnit(void)
+CPTFriendUnit::~CPTFriendUnit(void)
 {
 }
 
-Sprite* CPTFirendUnit::GetNode()
+Sprite* CPTFriendUnit::GetNode()
 {
 	return this->node;
 }
 
-CPTBOOL CPTFirendUnit::IsHit(CPTFLOAT x, CPTFLOAT y)
+CPTBOOL CPTFriendUnit::IsHit(CPTFLOAT x, CPTFLOAT y)
 {
 	auto height = this->node->getContentSize().height;
 	auto width = this->node->getContentSize().width;

@@ -51,9 +51,6 @@
     <ClCompile Include="BackgroundLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CPTFirendUnit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CPTEnemyUnit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -70,6 +67,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TouchProxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CPTFriendUnit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,9 +113,6 @@
     <ClInclude Include="BackgroundLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CPTFirendUnit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CPTEnemyUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -132,6 +129,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TouchProxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPTFriendUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
