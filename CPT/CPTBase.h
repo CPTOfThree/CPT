@@ -4,7 +4,7 @@
 
 #define DEBUG
 
-#include "..\..\VLD\include\vld.h"
+//#include "..\..\VLD\include\vld.h"
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "ui/UILayout.h" 
