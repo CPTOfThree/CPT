@@ -3,9 +3,7 @@
 CPTRTLevelInfo* CPTRTLevelInfo::_self = NULL;
 CPTRTLevelInfo* CPTRTLevelInfo::getRTLevelInfo(bool needNew)
 {
-	if (needNew == true 
-		|| _self == nullptr
-		)
+	if (needNew == true || _self == nullptr)
 	{
 		_self = new CPTRTLevelInfo();
 	}
@@ -19,13 +17,13 @@ CPTRTLevelInfo* CPTRTLevelInfo::getRTLevelInfo(bool needNew)
 CPTRTLevelInfo::~CPTRTLevelInfo(void)
 {
 	delete this->enemys;
-	delete this->firends;
+	delete this->friends;
 }
 
 CPTRTLevelInfo::CPTRTLevelInfo(void)
 {
 	this->enemys = new list<CPTEnemyUnit*>;
-	this->firends = new list<CPTFirendUnit*>;
+	this->friends = new list<CPTFriendUnit*>;
 	this->deadEnemys = new list<CPTEnemyUnit*>;
 }
 
@@ -36,13 +34,13 @@ list<CPTEnemyUnit*>* CPTRTLevelInfo::GetEnemys()
 
 list<CPTFriendUnit*>* CPTRTLevelInfo::GetFirends()
 {
-	return this->firends;
+	return this->friends;
 }
 
 CPTFriendUnit* CPTRTLevelInfo::HitTestFirend(CPTFLOAT x, CPTFLOAT y)
 {
 	CPTFriendUnit* unit = NULL;
-	for (auto iter = this->firends->begin(); iter != this->firends->end(); iter++)
+	for (auto iter = this->friends->begin(); iter != this->friends->end(); iter++)
 	{
 		if ((*iter)->IsHit(x, y))
 		{

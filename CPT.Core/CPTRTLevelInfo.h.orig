@@ -27,7 +27,7 @@ private:
 	CPTRTLevelInfo(void);
 	CPTRTLevelInfo(CPTRTLevelInfo& info);
 	static CPTRTLevelInfo* _self;
-	list<CPTFriendUnit*>* friends;
+	list<CPTFriendUnit*>* firends;
 	list<CPTEnemyUnit*>* enemys;
 	list<CPTEnemyUnit*>* deadEnemys;
 };
