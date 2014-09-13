@@ -19,4 +19,8 @@ int main () {
 	}catch(int i){
 		printf("%d", i);
 	}
+
+	ClassA* classA = new ClassA;
+	auto testList = new TestList;
+	testList->AddClassA(classA);
 }

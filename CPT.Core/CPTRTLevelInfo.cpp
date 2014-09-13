@@ -18,15 +18,18 @@ CPTRTLevelInfo* CPTRTLevelInfo::getRTLevelInfo(bool needNew)
 
 CPTRTLevelInfo::~CPTRTLevelInfo(void)
 {
-	
+	delete this->enemys;
+	delete this->firends;
 }
 
 CPTRTLevelInfo::CPTRTLevelInfo(void)
 {
-	
+	this->enemys = new list<CPTEnemyUnit*>;
+	this->firends = new list<CPTFirendUnit*>;
+	this->deadEnemys = new list<CPTEnemyUnit*>;
 }
 
-list<CPTEnemyUnit>* CPTRTLevelInfo::GetEnemys()
+list<CPTEnemyUnit*>* CPTRTLevelInfo::GetEnemys()
 {
 	return this->enemys;
 }
@@ -55,16 +58,24 @@ CPTEnemyUnit* CPTRTLevelInfo::HitTestEnemys(CPTFLOAT x, CPTFLOAT y)
 	CPTEnemyUnit* unit = NULL;
 	for (auto iter = this->enemys->begin(); iter != this->enemys->end(); iter++)
 	{
-		if ((iter)->IsHit(x, y))
+		if ((*iter)->IsHit(x, y))
 		{
-			unit = (&(*iter));
+			unit = (*iter);
 		}
 	}
 	return unit;
 }
 
+CPTBOOL CPTRTLevelInfo::AddDeadEnemy(CPTEnemyUnit* unit)
+{
+	unit->GetNode()->setVisible(false);
+	this->enemys->remove(unit);
+	this->deadEnemys->push_back(unit);
+	return true;
+}
+
 void CPTRTLevelInfo::AddEnemy(CPTEnemyUnit* unit)
 {
 	//this->enemys->push_back((&unit));
-	this->enemys->push_back(*unit);
+	this->enemys->push_back(unit);
 }

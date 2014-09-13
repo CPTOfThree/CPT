@@ -19,10 +19,12 @@ public:
 	void PausePlay();
 	void RestartPlay();
 	void AddEnemy(CPTFLOAT dt);
+	
 	//friend void CALLBACK TimeProc(HWND hWnd, UINT nMSG, UINT nTimerId, DWORD dwTime);
 	CPTMainGameScene* mainGameScene;
 
 private:
 	TouchProxy touchProxy;
+	
 };
 

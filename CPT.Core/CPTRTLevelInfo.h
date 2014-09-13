@@ -15,10 +15,11 @@ public:
 	static CPTRTLevelInfo* getRTLevelInfo(CPTBOOL needNew);
 	~CPTRTLevelInfo(void);
 	list<CPTFirendUnit*>* GetFirends();
-	list<CPTEnemyUnit>* GetEnemys();
+	list<CPTEnemyUnit*>* GetEnemys();
 	void AddEnemy(CPTEnemyUnit* unit);
 	CPTFirendUnit* HitTestFirend(CPTFLOAT x, CPTFLOAT y);
 	CPTEnemyUnit* HitTestEnemys(CPTFLOAT x, CPTFLOAT y);
+	CPTBOOL AddDeadEnemy(CPTEnemyUnit* unit);
 	CPTINT level;
 	//CPTMainGameScene* mainGameScene;
 
@@ -27,7 +28,8 @@ private:
 	CPTRTLevelInfo(CPTRTLevelInfo& info);
 	static CPTRTLevelInfo* _self;
 	list<CPTFirendUnit*>* firends;
-	list<CPTEnemyUnit>* enemys;
+	list<CPTEnemyUnit*>* enemys;
+	list<CPTEnemyUnit*>* deadEnemys;
 };
 
 

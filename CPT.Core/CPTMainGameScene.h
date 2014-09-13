@@ -19,5 +19,9 @@ public:
 	void addEnemy(CPTEnemyUnit* enemyUnit);
 	void timeToAddEnemy(CPTFLOAT dt);
 	void onAttach(CPTFLOAT x, CPTFLOAT y);
+	CPTBOOL OnTouch(Touch* touch, Event  *event);
+
+private:
+	EventListenerTouchOneByOne* listener;
 };
 

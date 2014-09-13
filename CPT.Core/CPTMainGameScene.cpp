@@ -12,15 +12,26 @@ bool CPTMainGameScene::init()
 	}
 
 	this->schedule(schedule_selector(CPTMainGameScene::timeToAddEnemy), 1.0f);
+	this->listener = EventListenerTouchOneByOne::create();
+	this->listener->onTouchBegan = CC_CALLBACK_2(CPTMainGameScene::OnTouch, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(this->listener, this);
 	return true;
 }
 
 void CPTMainGameScene::timeToAddEnemy(CPTFLOAT dt)
 {
 	auto sprite = Sprite::create("Target.png");
-	//sprite->setPosition(100, 200);
 	auto enemy = new CPTEnemyUnit(sprite);
 	this->addEnemy(enemy);
+}
+
+CPTBOOL CPTMainGameScene::OnTouch(Touch* touch, Event  *event)
+{
+	EventMouse* e = (EventMouse*)event;
+	auto location = touch->getLocation();
+	//this->onAttach(e->getCursorX(), e->getCursorY());
+	this->onAttach(location.x, location.y);
+	return true;
 }
 
 void CPTMainGameScene::loadGameLayers()
@@ -29,7 +40,6 @@ void CPTMainGameScene::loadGameLayers()
 	//auto level = CPTRTLevelInfo::getRTLevelInfo(false)->level;
 	auto backgroundLayer = Layer::create();
 	this->addChild(backgroundLayer);
-
 	// Ìí¼ÓÖ÷ÓÎÏ·²ã
 	auto mainGameLayer = (Layer*)MainGameLayer::create();
 	this->addChild(mainGameLayer);
@@ -38,7 +48,7 @@ void CPTMainGameScene::loadGameLayers()
 void CPTMainGameScene::addEnemy(CPTEnemyUnit* enemyUnit)
 {
 	auto levelInfo = CPTRTLevelInfo::getRTLevelInfo(false);
-	//levelInfo->AddEnemy(enemyUnit);
+	levelInfo->AddEnemy(enemyUnit);
 	auto path = layoutManager->GetPath(UnitType::Enemy);
 
 	auto point = path->points[0];
@@ -51,13 +61,11 @@ void CPTMainGameScene::addEnemy(CPTEnemyUnit* enemyUnit)
 
 void CPTMainGameScene::onAttach(CPTFLOAT x, CPTFLOAT y)
 {
-	/*
 	auto rtLevelInfo = CPTRTLevelInfo::getRTLevelInfo(false);
 	AutoPropertyUnit* obj = rtLevelInfo->HitTestEnemys(x, y);
-	if (obj == nullptr)
+	if (obj != nullptr)
 	{
-		obj = rtLevelInfo->HitTestFirend(x, y);	
+		//delete obj;
+		rtLevelInfo->AddDeadEnemy((CPTEnemyUnit*)obj);
 	}
-
-	*/
 }

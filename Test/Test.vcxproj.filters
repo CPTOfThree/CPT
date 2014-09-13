@@ -21,12 +21,24 @@
     <ClInclude Include="MyException.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="TestList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassA.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MyException.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TestList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassA.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

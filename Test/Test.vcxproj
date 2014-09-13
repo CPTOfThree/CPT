@@ -64,12 +64,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ClassA.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MyException.h" />
+    <ClInclude Include="TestList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ClassA.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyException.cpp" />
+    <ClCompile Include="TestList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

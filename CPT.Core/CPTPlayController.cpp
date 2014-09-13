@@ -24,7 +24,8 @@ void CALLBACK TimeProc(HWND hWnd, UINT nMSG, UINT nTimerid, DWORD dwTime)
 }
 
 CPTPlayController::CPTPlayController(void)
-{	
+{
+
 }
 
 
