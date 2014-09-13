@@ -19,8 +19,8 @@ public:
 	Sprite* GetNode();
 	CPTBOOL IsHit(CPTFLOAT x, CPTFLOAT y);
 	UnitType GetUnitType();
-	void AddAbiliy(CPTAbility* ability);
-	void RunAbilies();
+	void AddAbility(CPTAbility* ability);
+	void RunAbilities();
 
 private:
 	Sprite* node;

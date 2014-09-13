@@ -46,12 +46,12 @@ CPTBOOL CPTEnemyUnit::IsHit(CPTFLOAT x, CPTFLOAT y)
 }
 
 
-void CPTEnemyUnit::AddAbiliy(CPTAbility* ability)
+void CPTEnemyUnit::AddAbility(CPTAbility* ability)
 {
 	this->abilities->push_back(ability);
 }
 
-void CPTEnemyUnit::RunAbilies()
+void CPTEnemyUnit::RunAbilities()
 {
 	this->node->stopAllActions();
 	// this->node->getActionManager()->removeAllActions();
