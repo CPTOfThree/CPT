@@ -3,7 +3,6 @@
 CPTRTLevelInfo* CPTRTLevelInfo::_self = NULL;
 CPTRTLevelInfo* CPTRTLevelInfo::getRTLevelInfo(bool needNew)
 {
-	/*
 	if (needNew == true 
 		|| _self == nullptr
 		)
@@ -12,16 +11,22 @@ CPTRTLevelInfo* CPTRTLevelInfo::getRTLevelInfo(bool needNew)
 	}
 
 	return _self;
-	*/
-	return NULL;
+	//static CPTRTLevelInfo instance;   //局部静态变量
+	
+	return _self;
 }
 
-CPTRTLevelInfo::~CPTRTLevelInfo()
+CPTRTLevelInfo::~CPTRTLevelInfo(void)
 {
 	
 }
 
-list<CPTEnemyUnit*>* CPTRTLevelInfo::GetEnemys()
+CPTRTLevelInfo::CPTRTLevelInfo(void)
+{
+	
+}
+
+list<CPTEnemyUnit>* CPTRTLevelInfo::GetEnemys()
 {
 	return this->enemys;
 }
@@ -50,10 +55,16 @@ CPTEnemyUnit* CPTRTLevelInfo::HitTestEnemys(CPTFLOAT x, CPTFLOAT y)
 	CPTEnemyUnit* unit = NULL;
 	for (auto iter = this->enemys->begin(); iter != this->enemys->end(); iter++)
 	{
-		if ((*iter)->IsHit(x, y))
+		if ((iter)->IsHit(x, y))
 		{
-			unit = (*iter);
+			unit = (&(*iter));
 		}
 	}
 	return unit;
+}
+
+void CPTRTLevelInfo::AddEnemy(CPTEnemyUnit* unit)
+{
+	//this->enemys->push_back((&unit));
+	this->enemys->push_back(*unit);
 }

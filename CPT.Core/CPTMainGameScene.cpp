@@ -11,7 +11,16 @@ bool CPTMainGameScene::init()
 		return false;
 	}
 
+	this->schedule(schedule_selector(CPTMainGameScene::timeToAddEnemy), 1.0f);
 	return true;
+}
+
+void CPTMainGameScene::timeToAddEnemy(CPTFLOAT dt)
+{
+	auto sprite = Sprite::create("Target.png");
+	//sprite->setPosition(100, 200);
+	auto enemy = new CPTEnemyUnit(sprite);
+	this->addEnemy(enemy);
 }
 
 void CPTMainGameScene::loadGameLayers()
@@ -28,6 +37,15 @@ void CPTMainGameScene::loadGameLayers()
 
 void CPTMainGameScene::addEnemy(CPTEnemyUnit* enemyUnit)
 {
+	auto levelInfo = CPTRTLevelInfo::getRTLevelInfo(false);
+	//levelInfo->AddEnemy(enemyUnit);
+	auto path = layoutManager->GetPath(UnitType::Enemy);
+
+	auto point = path->points[0];
+	enemyUnit->GetNode()->setPosition(point.getX(), point.getY());
+	auto time = 3 + (rand() % 10);
+	auto action = MoveTo::create(time, Point(point.getX(), 0));
+	enemyUnit->GetNode()->runAction(action);
 	this->addChild(enemyUnit->GetNode());
 }
 

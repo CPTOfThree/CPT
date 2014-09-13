@@ -3,7 +3,7 @@
 #include "../CPT/CPTBase.h"
 #include <fstream>
 #include <sstream>
-#include "StartGameScene.h"
+//#include "StartGameScene.h"
 
 class CPTLayoutManager
 { 

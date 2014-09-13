@@ -7,6 +7,7 @@
 #include "CPTEnemyUnit.h"
 #include "minwindef.h"
 #include "TouchProxy.h"
+#include "extensions/cocos-ext.h"
 class CPTPlayController
 {
 public:
@@ -17,6 +18,7 @@ public:
 	void StopPlay();
 	void PausePlay();
 	void RestartPlay();
+	void AddEnemy(CPTFLOAT dt);
 	//friend void CALLBACK TimeProc(HWND hWnd, UINT nMSG, UINT nTimerId, DWORD dwTime);
 	CPTMainGameScene* mainGameScene;
 

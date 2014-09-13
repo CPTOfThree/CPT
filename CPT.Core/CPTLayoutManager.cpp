@@ -8,9 +8,9 @@ CPTLayoutManager::CPTLayoutManager(CPTINT level)
 	// 读取对应level的地图，并将其替换现有的Scene
 	auto fileName = this->_getFileName(level);
 	//auto scene = dynamic_cast<Scene*>(CPTLoadLayoutFromPath(fileName));
-	auto scene = StartGameScene::create();
-	scene->loadBackground(fileName);
-	CCDirector::getInstance()->replaceScene(scene);
+	//auto scene = StartGameScene::create();
+	//scene->loadBackground(fileName);
+	//CCDirector::getInstance()->replaceScene(scene);
 }
 
 CPTLayoutManager::~CPTLayoutManager(void)
@@ -45,6 +45,36 @@ char* CPTLayoutManager::_getFileName(CPTINT level)
 
 CPTUnitPath* CPTLayoutManager::GetPath(UnitType unitType)
 {
+	/*
+		以下为原型代码，做测试用
+	*/
+	CPTUnitPath* path = nullptr;
+	switch (unitType)
+	{
+	case Enemy:
+		{
+			path = new CPTUnitPath;
+			path->unitType = UnitType::Enemy;
+			//auto y = cocos2d::Director::getInstance()->getVisibleSize().height;
+			auto y = 500;
+			auto x = 200 + rand() % 500;
+			path->length = y;
+			path->points = (CPTPoint*)malloc(sizeof(CPTPoint) * y);
+			for (; y >= 0; y--)
+			{
+				 auto point = new CPTPoint();
+				 point->setX(x);
+				 point->setY(y);
+				 path->points[500 - y] = *point;
+			}
+		}
+		break;
+	}
+
+	return path;
+	/*
+		原型代码结束
+	*/
 	for (auto i = 0; i < _pathesCount; i++)
 	{
 		auto path = _pathes[i];

@@ -37,6 +37,11 @@ void CPTPlayController::StartPlay()
 
 	SetTimer(NULL, 1, 1000, TimeProc); //
 	// ¼àÌýµã»÷ÊÂ¼þ
+	//mainGameScene->schedule(schedule_selector(CPTPlayController::AddEnemy), 1.0f);
+}
+
+void CPTPlayController::AddEnemy(CPTFLOAT dt)
+{
 }
 
 void CPTPlayController::PausePlay()

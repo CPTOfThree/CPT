@@ -21,9 +21,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 	
+	/*
 	auto obj = Sprite::create();
 
 	obj->getPosition();
+	*/
 	// turn on display FPS
     director->setDisplayStats(true);
 
