@@ -3,6 +3,7 @@
 
 CPTEnemyUnit::CPTEnemyUnit(Sprite* node)
 {
+	this->abilities = new list<CPTAbility*>;
 	this->_unitType = UnitType::Enemy;
 	this->node = node;
 }

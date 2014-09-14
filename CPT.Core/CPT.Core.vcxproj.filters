@@ -69,7 +69,13 @@
     <ClCompile Include="TouchProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CPTFriendUnit.cpp">
+<ClCompile Include="CPTFriendUnit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbilityFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -131,7 +137,13 @@
     <ClInclude Include="TouchProxy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CPTFriendUnit.h">
+ <ClInclude Include="RandomWalkAbility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilityFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

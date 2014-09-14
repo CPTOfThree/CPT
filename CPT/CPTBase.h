@@ -113,4 +113,12 @@ typedef struct cptUnitPath
 	CPTPoint *points;
 	int length;
 } CPTUnitPath;
+
+enum CPTAbilityType
+{
+	Default, // 该Ability不提供任何能力，能力由用户通过Action提供
+	GoStraightWalk,
+	RandomWalk,
+};
+
 #endif

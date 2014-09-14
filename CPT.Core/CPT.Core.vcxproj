@@ -69,6 +69,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbilityFactory.cpp" />
     <ClCompile Include="AppDelegate.cpp" />
     <ClCompile Include="AutoPropertyUnit.cpp" />
     <ClCompile Include="BackgroundLayer.cpp" />
@@ -84,12 +85,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGameLayer.cpp" />
     <ClCompile Include="CPTMainGameScene.cpp" />
+    <ClCompile Include="RandomWalkAbility.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
     <ClCompile Include="StartGameScene.cpp" />
     <ClCompile Include="TouchProxy.cpp" />
     <ClCompile Include="WalkAbility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbilityFactory.h" />
     <ClInclude Include="AppDelegate.h" />
     <ClInclude Include="AutoPropertyUnit.h" />
     <ClInclude Include="BackgroundLayer.h" />
@@ -105,6 +108,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="MainGameLayer.h" />
     <ClInclude Include="CPTMainGameScene.h" />
+    <ClInclude Include="RandomWalkAbility.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SelectLevelScene.h" />
     <ClInclude Include="StartGameScene.h" />

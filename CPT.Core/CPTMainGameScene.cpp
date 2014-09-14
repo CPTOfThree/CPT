@@ -11,11 +11,16 @@ bool CPTMainGameScene::init()
 		return false;
 	}
 
-	this->schedule(schedule_selector(CPTMainGameScene::timeToAddEnemy), 1.0f);
+	this->schedule(schedule_selector(CPTMainGameScene::timeup), 0.0f);
 	this->listener = EventListenerTouchOneByOne::create();
 	this->listener->onTouchBegan = CC_CALLBACK_2(CPTMainGameScene::OnTouch, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(this->listener, this);
 	return true;
+}
+
+void CPTMainGameScene::timeup(CPTFLOAT dt)
+{
+	this->timeToAddEnemy(dt);
 }
 
 void CPTMainGameScene::timeToAddEnemy(CPTFLOAT dt)
@@ -27,7 +32,6 @@ void CPTMainGameScene::timeToAddEnemy(CPTFLOAT dt)
 
 CPTBOOL CPTMainGameScene::OnTouch(Touch* touch, Event  *event)
 {
-	EventMouse* e = (EventMouse*)event;
 	auto location = touch->getLocation();
 	//this->onAttach(e->getCursorX(), e->getCursorY());
 	this->onAttach(location.x, location.y);
@@ -55,7 +59,12 @@ void CPTMainGameScene::addEnemy(CPTEnemyUnit* enemyUnit)
 	enemyUnit->GetNode()->setPosition(point.getX(), point.getY());
 	auto time = 3 + (rand() % 10);
 	auto action = MoveTo::create(time, Point(point.getX(), 0));
-	enemyUnit->GetNode()->runAction(action);
+	//enemyUnit->GetNode()->runAction(action);
+	auto ability = AbilityFactory::GetAbility(CPTAbilityType::Default);
+	ability->SetAction(action);
+	ability->IsEnable = true;
+	enemyUnit->AddAbility(ability);
+	enemyUnit->RunAbilities();
 	this->addChild(enemyUnit->GetNode());
 }
 
